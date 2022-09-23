@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../widgets/settings_drawer.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class Home extends StatelessWidget {
           'Best Anime',
         ),
       ),
+      //endDrawer: SettingsDrawer(),
       body: Container(
         child: Center(
           child: Column(
