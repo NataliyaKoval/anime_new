@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../widgets/settings_drawer.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+
+  static final List<Widget> _widgetOptions = <Widget>[
+    Container(color: Colors.redAccent,),
+    Container(color: Colors.blueAccent,),
+    Container(color: Colors.greenAccent,)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,30 +27,13 @@ class Home extends StatelessWidget {
         ),
       ),
       //endDrawer: SettingsDrawer(),
-      body: Container(
-        child: Center(
-          child: Column(
-            children: [
-              Text('fdhggfjfhjfj'),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () => MyApp.of(context).changeTheme(ThemeMode.light),
-                    icon: const Icon(Icons.sunny),
-                  ),
-                  IconButton(
-                    onPressed: () => MyApp.of(context).changeTheme(ThemeMode.dark),
-                    icon: const Icon(Icons.cloud),
-                  ),
-                ],
-              ),
-              FloatingActionButton(onPressed: () {})
-            ],
-          ),
-        ),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        selectedItemColor: Theme.of(context).colorScheme.secondary,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             label: 'label1',
@@ -45,9 +41,19 @@ class Home extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             label: 'label2',
-          )
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
         ],
       ),
     );
+  }
+
+  _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
