@@ -1,10 +1,16 @@
+import 'package:anime_new/providers/theme_provider.dart';
 import 'package:anime_new/screens/home.dart';
-import 'package:anime_new/consts/color_consts.dart';
 import 'package:anime_new/themes/theme_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+      ],
+      child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -18,13 +24,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late ThemeMode _themeMode = ThemeMode.system;
-
-  void changeTheme(ThemeMode themeMode) {
-    setState(() {
-      _themeMode = themeMode;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +31,16 @@ class _MyAppState extends State<MyApp> {
       title: 'Anime',
       theme: AppTheme().lightTheme,
       darkTheme: AppTheme().darkTheme,
-      themeMode: _themeMode,
-      home: Home(
+      themeMode: context.watch<ThemeProvider>().getTheme(),
+      home: FutureBuilder(
+        future: _syncTheme(context),
+        builder: (context, snapshot) => const Home(),
       ),
     );
+  }
+
+  Future<void> _syncTheme(BuildContext context) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    context.read<ThemeProvider>().theme = _prefs.getString("theme") ?? "system";
   }
 }

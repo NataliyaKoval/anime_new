@@ -8,21 +8,21 @@ class SettingsDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconButton(
-            onPressed: () => MyApp.of(context).changeTheme(ThemeMode.light),
-            icon: const Icon(Icons.sunny,
-            size: 50,),
-          ),
-          IconButton(
-            onPressed: () => MyApp.of(context).changeTheme(ThemeMode.dark),
-            icon: const Icon(Icons.cloud,
-            size: 50,),
-          ),
-        ],
-      ),
+      // child: Column(
+      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //   children: [
+      //     IconButton(
+      //       onPressed: () => MyApp.of(context).changeTheme(ThemeMode.light),
+      //       icon: const Icon(Icons.sunny,
+      //       size: 50,),
+      //     ),
+      //     IconButton(
+      //       onPressed: () => MyApp.of(context).changeTheme(ThemeMode.dark),
+      //       icon: const Icon(Icons.cloud,
+      //       size: 50,),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
