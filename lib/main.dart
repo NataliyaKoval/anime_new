@@ -8,7 +8,9 @@ import 'database/app_preferences.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (_) => ThemeProvider(),
+    ),
   ], child: const MyApp()));
 }
 
@@ -18,8 +20,8 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-  // static _MyAppState of(BuildContext context) =>
-  //     context.findAncestorStateOfType<_MyAppState>()!;
+// static _MyAppState of(BuildContext context) =>
+//     context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {

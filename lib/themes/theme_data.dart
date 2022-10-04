@@ -7,12 +7,23 @@ class AppTheme {
       primary: AppColors.purple,
       secondary: AppColors.orange,
     ),
+    iconTheme: const IconThemeData(
+      size: 40,
+    ),
   );
 
   ThemeData darkTheme = ThemeData.dark().copyWith(
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: AppColors.grey,
-      secondary: AppColors.orange,
-    ),
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: AppColors.grey,
+        secondary: AppColors.orange,
+      ),
+      iconTheme: const IconThemeData(
+        size: 40,
+      ),
+      toggleButtonsTheme: const ToggleButtonsThemeData(
+          selectedBorderColor: AppColors.lightOrange,
+          color: AppColors.lightPurple,
+          fillColor: AppColors.lightOrange,
+          borderColor: AppColors.lightOrange),
   );
 }

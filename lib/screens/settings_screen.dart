@@ -17,23 +17,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     ThemeProvider themeWatcher = context.watch<ThemeProvider>();
     AppPreferences appPreferences = AppPreferences();
 
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ToggleButtons(
-            isSelected: [
-              themeWatcher.themeMode == ThemeMode.system,
-              themeWatcher.themeMode == ThemeMode.light,
-              themeWatcher.themeMode == ThemeMode.dark,
-            ],
-            onPressed: (index) async => await appPreferences.setThemeMode(index, context),
-            children: const [
-              Icon(Icons.phone),
-              Icon(Icons.sunny),
-              Icon(Icons.cloud),
-            ],
-          ),
+    return Center(
+      child: ToggleButtons(
+        isSelected: [
+          themeWatcher.themeMode == ThemeMode.system,
+          themeWatcher.themeMode == ThemeMode.light,
+          themeWatcher.themeMode == ThemeMode.dark,
+        ],
+        onPressed: (index) async => await appPreferences.setThemeMode(index, context),
+        constraints: BoxConstraints.expand(width: MediaQuery.of(context).size.width/4),
+        children: const [
+          Icon(Icons.phone),
+          Icon(Icons.sunny),
+          Icon(Icons.cloud),
         ],
       ),
     );
