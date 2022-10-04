@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  String _theme = 'system';
+  ThemeMode _themeMode = ThemeMode.system;
 
-  String get theme => _theme;
+  ThemeMode get themeMode => _themeMode;
 
-  set theme(String value) {
-    _theme = value;
+  set themeMode(ThemeMode value) {
+    _themeMode = value;
     notifyListeners();
-  }
-
-  ThemeMode getTheme() {
-    switch (_theme) {
-      case "light":
-        return ThemeMode.light;
-      case "dark":
-        return ThemeMode.dark;
-      default:
-        return ThemeMode.system;
-    }
   }
 }

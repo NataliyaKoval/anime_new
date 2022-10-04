@@ -1,10 +1,5 @@
 import 'package:anime_new/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../main.dart';
-import '../providers/theme_provider.dart';
-import '../widgets/settings_drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,7 +14,7 @@ class _HomeState extends State<Home> {
   static final List<Widget> _widgetOptions = <Widget>[
     Container(color: Colors.redAccent,),
     Container(color: Colors.blueAccent,),
-    SettingsScreen(),
+    const SettingsScreen(),
   ];
 
   @override
