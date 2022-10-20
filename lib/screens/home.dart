@@ -1,3 +1,4 @@
+import 'package:anime_new/screens/anime_screen.dart';
 import 'package:anime_new/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    Container(color: Colors.redAccent,),
+    const AnimeScreen(),
     Container(color: Colors.blueAccent,),
     const SettingsScreen(),
   ];
