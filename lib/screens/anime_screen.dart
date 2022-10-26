@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/anime.dart';
 import '../services/anime_service.dart';
+import '../widgets/anime_card.dart';
 
 class AnimeScreen extends StatefulWidget {
   const AnimeScreen({Key? key}) : super(key: key);
@@ -28,21 +29,18 @@ class _AnimeScreenState extends State<AnimeScreen> {
           if (snapshot.hasData) {
             final animes = snapshot.data!;
             return ListView.builder(
+              padding: const EdgeInsets.all(10.0),
               itemCount: animes.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(animes[index].title),
-                  );
-                });
+              itemBuilder: (context, index) {
+                return AnimeCard(anime: animes[index]);
+              },
+            );
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return Text('$snapshot.error}');
           }
-
-          // By default, show a loading spinner.
           return const CircularProgressIndicator();
         },
-      )
+      ),
     );
   }
 }
-
