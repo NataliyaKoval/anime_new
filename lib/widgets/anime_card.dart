@@ -34,7 +34,7 @@ class AnimeCard extends StatelessWidget {
               Text(
                 anime.title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.headline1,
               ),
             ],
           ),
