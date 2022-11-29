@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/anime.dart';
+import '../widgets/anime_characters_list.dart';
 import '../widgets/anime_synopsis.dart';
 
 class SingleAnimeScreen extends StatelessWidget {
@@ -52,6 +53,7 @@ class SingleAnimeScreen extends StatelessWidget {
               height: 8,
             ),
             AnimeSynopsis(anime: anime,),
+            AnimeCharactersList(anime: anime),
           ]),
         ),
       ),
