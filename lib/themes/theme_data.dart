@@ -10,6 +10,29 @@ class AppTheme {
     iconTheme: const IconThemeData(
       size: 40,
     ),
+    textTheme: const TextTheme(
+      headline1: TextStyle(
+        color: AppColors.purple,
+        fontSize: 24.0,
+        fontWeight: FontWeight.w600,
+      ),
+      headline2: TextStyle(
+        color: AppColors.lightPurple,
+        fontSize: 24.0,
+        fontWeight: FontWeight.w500,
+      ),
+      headline3: TextStyle(
+        color: AppColors.lightOrange,
+        fontSize: 20.0,
+        fontWeight: FontWeight.w500,
+      ),
+      bodyText1: TextStyle(
+        fontSize: 20.0,
+      ),
+      bodyText2: TextStyle(
+        fontSize: 18.0,
+      ),
+    ),
   );
 
   ThemeData darkTheme = ThemeData.dark().copyWith(

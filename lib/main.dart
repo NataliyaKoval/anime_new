@@ -1,3 +1,5 @@
+import 'package:anime_new/di/providers.dart';
+import 'package:anime_new/presentation/screens/animes_screen/widget/anime_screen.dart';
 import 'package:anime_new/providers/theme_provider.dart';
 import 'package:anime_new/screens/home.dart';
 import 'package:anime_new/themes/theme_data.dart';
@@ -6,6 +8,9 @@ import 'package:provider/provider.dart';
 
 import 'database/app_preferences.dart';
 
+// void main() {
+//   runApp(const MyApp());
+// }
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<ThemeProvider>(
@@ -20,24 +25,40 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-// static _MyAppState of(BuildContext context) =>
-//     context.findAncestorStateOfType<_MyAppState>()!;
+static _MyAppState of(BuildContext context) =>
+    context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
+  late Providers providers;
+
+  @override
+  void initState() {
+    super.initState();
+    providers = Providers();
+  }
+
   @override
   Widget build(BuildContext context) {
-    AppPreferences appPreferences = AppPreferences();
+   AppPreferences appPreferences = AppPreferences();
 
-    return MaterialApp(
-      title: 'Anime',
-      theme: AppTheme().lightTheme,
-      darkTheme: AppTheme().darkTheme,
-      themeMode: context.watch<ThemeProvider>().themeMode,
-      home: FutureBuilder(
-        future: appPreferences.syncThemeMode(context),
-        builder: (context, snapshot) => const Home(),
-      ),
+    return MultiProvider(
+      providers: providers.providers,
+      child: MaterialApp(
+        title: 'Anime',
+        theme: AppTheme().lightTheme,
+        darkTheme: AppTheme().darkTheme,
+        themeMode: context
+            .watch<ThemeProvider>()
+            .themeMode,
+        home: Scaffold(
+          appBar: AppBar(),
+          body: const AnimeScreen(),
+        ),
+        // home: FutureBuilder(
+        //   future: appPreferences.syncThemeMode(context),
+        //   builder: (context, snapshot) => const AnimeScreen(),
+        ),
     );
   }
 }
