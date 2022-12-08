@@ -1,11 +1,10 @@
-import 'package:anime_new/domain/models/anime.dart';
+import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/animes_screen/bloc/animes_screen_bloc.dart';
 import 'package:anime_new/presentation/screens/animes_screen/usecase/get_best_animes.dart';
+import 'package:anime_new/widgets/anime_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../widgets/anime_card.dart';
 
 class AnimeScreen extends StatelessWidget {
   const AnimeScreen({Key? key}) : super(key: key);

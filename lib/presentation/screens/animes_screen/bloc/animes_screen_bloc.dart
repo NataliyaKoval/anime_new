@@ -5,20 +5,18 @@ import 'package:anime_new/presentation/screens/animes_screen/usecase/get_best_an
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../data/repository/repository.dart';
-
-
 part 'animes_screen_event.dart';
 
 part 'animes_screen_state.dart';
 
 class AnimesScreenBloc extends Bloc<AnimesScreenEvent, AnimesScreenState> {
-  final GetBestAnimesUsecase getBestAnimesUsecase;
 
   AnimesScreenBloc({required this.getBestAnimesUsecase})
       : super(AnimesScreenInitial()) {
     on<GetBestAnimes>(_getBestAnimes);
   }
+
+  final GetBestAnimesUsecase getBestAnimesUsecase;
 
   Future<void> _getBestAnimes(GetBestAnimes event,
       Emitter<AnimesScreenState> emit) async {

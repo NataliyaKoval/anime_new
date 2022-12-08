@@ -1,4 +1,4 @@
-import 'package:anime_new/domain/models/anime.dart';
+import 'package:anime_new/domain/models/models.dart';
 
 abstract class AnimesRepository {
   Future<List<Anime>> fetchAnimes();

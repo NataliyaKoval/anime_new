@@ -1,8 +1,8 @@
 import 'package:anime_new/domain/models/models.dart';
 
-class Response {
+class AnimesResponseBody {
 
-  Response(this.data);
+  AnimesResponseBody(this.data);
 
   final List<Anime> data;
 }
