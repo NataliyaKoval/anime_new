@@ -9,3 +9,7 @@ export 'animes_response_body.dart';
 export 'character.dart';
 export 'character_images.dart';
 export 'character_jpg.dart';
+export 'manga.dart';
+export 'manga_images.dart';
+export 'manga_jpg.dart';
+export 'top_manga_response_body.dart';
