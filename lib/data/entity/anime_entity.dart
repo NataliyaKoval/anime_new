@@ -6,7 +6,6 @@ part 'anime_entity.g.dart';
 
 @JsonSerializable()
 class AnimeEntity implements Anime {
-
   const AnimeEntity({
     required this.id,
     required this.url,
@@ -15,11 +14,11 @@ class AnimeEntity implements Anime {
     required this.titleJapanese,
     required this.synopsis,
     this.year,
-});
+  });
 
   //flutter pub run build_runner build
-  factory AnimeEntity.fromJson(Map<String, dynamic> json) => _$AnimeEntityFromJson(json);
-  //Map<String, dynamic> toJson() => _$AnimeEntityToJson(this);
+  factory AnimeEntity.fromJson(Map<String, dynamic> json) =>
+      _$AnimeEntityFromJson(json);
 
   @override
   @JsonKey(name: 'mal_id')

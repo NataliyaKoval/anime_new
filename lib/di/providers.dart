@@ -1,6 +1,9 @@
 import 'package:anime_new/data/datasources/animes_remote_data_source.dart';
+import 'package:anime_new/data/datasources/characters_remote_data_source.dart';
+import 'package:anime_new/data/repository/characters_repository_impl.dart';
 import 'package:anime_new/data/repository/repository.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
+import 'package:anime_new/domain/repository/characters_repository.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -13,6 +16,15 @@ class Providers {
         Provider<AnimesRepository>(
           create: (BuildContext context) => AnimesRepositoryImpl(
             remoteDataSource: context.read<AnimesRemoteDataSource>(),
+          ),
+        ),
+        Provider<CharactersRemoteDataSource>(
+          create: (BuildContext context) => CharactersRemoteDataSource(),
+        ),
+        Provider<CharactersRepository>(
+          create: (BuildContext context) => CharactersRepositoryImpl(
+            charactersRemoteDataSource:
+                context.read<CharactersRemoteDataSource>(),
           ),
         )
       ];

@@ -1,8 +1,6 @@
-import 'package:anime_new/consts/color_consts.dart';
-import 'package:anime_new/domain/models/anime.dart';
+import 'package:anime_new/domain/models/models.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/single_anime_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../screens/single_anime_screen.dart';
 
 class AnimeCard extends StatelessWidget {
 
@@ -14,11 +12,11 @@ class AnimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) => SingleAnimeScreen(anime: anime)),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+              builder: (BuildContext context) => SingleAnimeScreen(anime: anime)),
+        );
       },
       child: Card(
         shadowColor: Colors.white,

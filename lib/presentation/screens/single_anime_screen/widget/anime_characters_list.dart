@@ -1,12 +1,10 @@
+// import 'package:anime_new/domain/models/models.dart';
 // import 'package:flutter/material.dart';
 //
-// import '../models/anime.dart';
-// import '../models/anime_character.dart';
-// import '../services/anime_service.dart';
-// import 'anime_character_card.dart';
 // class AnimeCharactersList extends StatefulWidget {
-//   final Anime anime;
 //   const AnimeCharactersList({Key? key, required this.anime}) : super(key: key);
+//
+//   final Anime anime;
 //
 //   @override
 //   State<AnimeCharactersList> createState() => _AnimeCharactersListState();

@@ -1,18 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'character_jpg.dart';
+part of 'character_jpg_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CharacterJpg _$CharacterJpgFromJson(Map<String, dynamic> json) => CharacterJpg(
+CharacterJpgEntity _$CharacterJpgEntityFromJson(Map<String, dynamic> json) =>
+    CharacterJpgEntity(
       json['image_url'] as String?,
       json['small_image_url'] as String?,
     );
 
-Map<String, dynamic> _$CharacterJpgToJson(CharacterJpg instance) =>
+Map<String, dynamic> _$CharacterJpgEntityToJson(CharacterJpgEntity instance) =>
     <String, dynamic>{
-      'image_url': instance.image_url,
-      'small_image_url': instance.small_image_url,
+      'image_url': instance.imageUrl,
+      'small_image_url': instance.smallImageUrl,
     };
