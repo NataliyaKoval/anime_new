@@ -15,40 +15,41 @@ class TopMangaScreen extends StatelessWidget {
         getTopMangaUsecase: GetTopMangaUsecase(
           topMangaRepository: context.read<TopMangaRepository>(),
         ),
-      ),
+      )..onTopMangaScreenInit(),
       child: Builder(builder: (BuildContext context) {
         return BlocBuilder<TopMangaScreenCubit, TopMangaScreenState>(
-            bloc: BlocProvider.of<TopMangaScreenCubit>(context)
-              ..onTopMangaScreenInit(),
             builder: (BuildContext context, TopMangaScreenState state) {
-              if (state is TopMangaScreenLoaded) {
-                final List<Manga> topMangaList = state.topMangaList;
-                return GridView.builder(
-                  itemCount: topMangaList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 1 / 1.4,
+          if (state is TopMangaScreenLoaded) {
+            final List<Manga> topMangaList = state.topMangaList;
+            return GridView.builder(
+              itemCount: topMangaList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 1 / 1.4,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  color: Colors.black,
+                  semanticContainer: true,
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: Text(
+                    topMangaList[index].title,
+                    style: const TextStyle(color: Colors.white),
                   ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.black,
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Text(topMangaList[index].title, style: const TextStyle(color: Colors.white),),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 5,
-                    );
-                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  elevation: 5,
                 );
-              } else if (state is TopMangaScreenError) {
-                return const Text('TopMangaScreenError');
-              }
-              return const CircularProgressIndicator();
-            });
+              },
+            );
+          } else if (state is TopMangaScreenError) {
+            return const Text('TopMangaScreenError');
+          }
+          return const CircularProgressIndicator();
+        });
       }),
     );
   }

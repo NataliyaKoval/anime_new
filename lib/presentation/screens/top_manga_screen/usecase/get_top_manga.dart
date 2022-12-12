@@ -11,7 +11,7 @@ class GetTopMangaUsecase extends NoParamsUseCase<List<Manga>> {
   final TopMangaRepository topMangaRepository;
 
   @override
-  Future<List<Manga>> call() async {
-    return await topMangaRepository.fetchTopManga();
+  Future<List<Manga>> call() {
+    return topMangaRepository.fetchTopManga();
   }
 }

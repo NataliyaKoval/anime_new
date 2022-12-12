@@ -79,8 +79,9 @@ class SingleAnimeScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemCount: animeCharacters.length,
                               itemBuilder: (BuildContext context, int index) {
-                                //return Text(animeCharacters[index].character.name);
-                                return AnimeCharacterCard(animeCharacter: animeCharacters[index],);
+                                return AnimeCharacterCard(
+                                  animeCharacter: animeCharacters[index],
+                                );
                               }),
                         );
                       } else if (state is SingleAnimeScreenError) {

@@ -47,15 +47,15 @@ class _MyAppState extends State<MyApp> {
       providers: providers.providers,
       child: MaterialApp(
         title: 'Anime',
-        theme: AppTheme().lightTheme,
-        darkTheme: AppTheme().darkTheme,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         themeMode: context
             .watch<ThemeProvider>()
             .themeMode,
         home: Scaffold(
           appBar: AppBar(),
-          //body: const AnimeScreen(),
-          body: const TopMangaScreen(),
+          body: const AnimeScreen(),
+          //body: const TopMangaScreen(),
         ),
         // home: FutureBuilder(
         //   future: appPreferences.syncThemeMode(context),
