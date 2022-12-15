@@ -8,10 +8,13 @@ class TopMangaScreenInitial extends TopMangaScreenState {}
 class TopMangaScreenLoading extends TopMangaScreenState {}
 
 class TopMangaScreenLoaded extends TopMangaScreenState {
-  TopMangaScreenLoaded(this.topMangaList);
+  TopMangaScreenLoaded({
+    required this.topMangaList,
+    required this.isLastPage,
+  });
 
   final List<Manga> topMangaList;
-
+  final bool isLastPage;
 }
 
 class TopMangaScreenError extends TopMangaScreenState {}

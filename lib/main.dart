@@ -54,8 +54,8 @@ class _MyAppState extends State<MyApp> {
             .themeMode,
         home: Scaffold(
           appBar: AppBar(),
-          body: const AnimeScreen(),
-          //body: const TopMangaScreen(),
+          //body: const AnimeScreen(),
+          body: TopMangaScreen(),
         ),
         // home: FutureBuilder(
         //   future: appPreferences.syncThemeMode(context),

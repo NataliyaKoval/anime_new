@@ -2,7 +2,7 @@ import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/top_manga_repository.dart';
 import 'package:anime_new/domain/usecase/usecase.dart';
 
-class GetTopMangaUsecase extends NoParamsUseCase<List<Manga>> {
+class GetTopMangaUsecase extends UseCase<TopMangaResponseBody, int> {
 
   GetTopMangaUsecase({
     required this.topMangaRepository,
@@ -11,7 +11,7 @@ class GetTopMangaUsecase extends NoParamsUseCase<List<Manga>> {
   final TopMangaRepository topMangaRepository;
 
   @override
-  Future<List<Manga>> call() {
-    return topMangaRepository.fetchTopManga();
+  Future<TopMangaResponseBody> call(int params) {
+    return topMangaRepository.fetchTopManga(params);
   }
 }
