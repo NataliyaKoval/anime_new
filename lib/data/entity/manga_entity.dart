@@ -11,7 +11,7 @@ class MangaEntity implements Manga {
     required this.url,
     this.images,
     required this.title,
-    required this.synopsis,
+    this.synopsis,
   });
 
   //flutter pub run build_runner build
@@ -36,5 +36,5 @@ class MangaEntity implements Manga {
 
   @override
   @JsonKey(name: 'synopsis')
-  final String synopsis;
+  final String? synopsis;
 }

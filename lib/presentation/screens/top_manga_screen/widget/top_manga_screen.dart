@@ -30,8 +30,9 @@ class _TopMangaScreenState extends State<TopMangaScreen> {
             return ListView.separated(
               controller: _scrollController
                 ..addListener(() {
-                  if (_scrollController.offset ==
-                      _scrollController.position.maxScrollExtent) {
+                  if (_scrollController.position.pixels >
+                          _scrollController.position.maxScrollExtent - 200 &&
+                      !state.isLastPage) {
                     context.read<TopMangaScreenCubit>().getTopManga();
                   }
                 }),
@@ -58,7 +59,10 @@ class _TopMangaScreenState extends State<TopMangaScreen> {
                 } else {
                   return Center(
                     child: state.isLastPage
-                        ? const Text('No more data to load')
+                        ? const Text(
+                            'You\'ve reached the end of the list',
+                            style: TextStyle(fontSize: 22),
+                          )
                         : const CircularProgressIndicator(),
                   );
                 }

@@ -11,7 +11,7 @@ class Manga {
     required this.url,
     this.images,
     required this.title,
-    required this.synopsis,
+    this.synopsis,
   });
 
   //flutter pub run build_runner build
@@ -21,5 +21,5 @@ class Manga {
   final String url;
   final MangaImages? images;
   final String title;
-  final String synopsis;
+  final String? synopsis;
 }
