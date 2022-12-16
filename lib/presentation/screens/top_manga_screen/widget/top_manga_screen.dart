@@ -73,10 +73,7 @@ class _TopMangaScreenState extends State<TopMangaScreen> {
           } else if (state is TopMangaScreenError) {
             return const Text('TopMangaScreenError');
           }
-          //return const CircularProgressIndicator();
-          return Container(
-            color: Colors.yellow,
-          );
+          return const CircularProgressIndicator();
         });
       }),
     );

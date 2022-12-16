@@ -1,5 +1,6 @@
 import 'package:anime_new/di/providers.dart';
 import 'package:anime_new/presentation/screens/animes_screen/widget/anime_screen.dart';
+import 'package:anime_new/presentation/screens/home_screen/widget/home_screen.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/widget/top_manga_screen.dart';
 import 'package:anime_new/providers/theme_provider.dart';
 import 'package:anime_new/screens/home.dart';
@@ -55,7 +56,7 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           appBar: AppBar(),
           //body: const AnimeScreen(),
-          body: TopMangaScreen(),
+          body: HomeScreen(),
         ),
         // home: FutureBuilder(
         //   future: appPreferences.syncThemeMode(context),
