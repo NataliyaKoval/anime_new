@@ -3,7 +3,6 @@ import 'package:anime_new/domain/repository/characters_repository.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/bloc/single_anime_screen_bloc.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/usecase/get_anime_characters.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_character_card.dart';
-import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_characters_list.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_synopsis.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,8 +79,9 @@ class SingleAnimeScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemCount: animeCharacters.length,
                               itemBuilder: (BuildContext context, int index) {
-                                //return Text(animeCharacters[index].character.name);
-                                return AnimeCharacterCard(animeCharacter: animeCharacters[index],);
+                                return AnimeCharacterCard(
+                                  animeCharacter: animeCharacters[index],
+                                );
                               }),
                         );
                       } else if (state is SingleAnimeScreenError) {

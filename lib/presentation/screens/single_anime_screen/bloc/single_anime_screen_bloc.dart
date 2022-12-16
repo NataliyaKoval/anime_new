@@ -27,7 +27,6 @@ class SingleAnimeScreenBloc
       emit(SingleAnimeScreenCharactersLoaded(animeCharactersList));
     } catch(e) {
       emit(SingleAnimeScreenError());
-      print('error: $e');
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:anime_new/di/providers.dart';
 import 'package:anime_new/presentation/screens/animes_screen/widget/anime_screen.dart';
+import 'package:anime_new/presentation/screens/top_manga_screen/widget/top_manga_screen.dart';
 import 'package:anime_new/providers/theme_provider.dart';
 import 'package:anime_new/screens/home.dart';
 import 'package:anime_new/themes/theme_data.dart';
@@ -46,14 +47,15 @@ class _MyAppState extends State<MyApp> {
       providers: providers.providers,
       child: MaterialApp(
         title: 'Anime',
-        theme: AppTheme().lightTheme,
-        darkTheme: AppTheme().darkTheme,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         themeMode: context
             .watch<ThemeProvider>()
             .themeMode,
         home: Scaffold(
           appBar: AppBar(),
-          body: const AnimeScreen(),
+          //body: const AnimeScreen(),
+          body: TopMangaScreen(),
         ),
         // home: FutureBuilder(
         //   future: appPreferences.syncThemeMode(context),
