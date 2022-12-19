@@ -31,6 +31,9 @@ class TopMangaScreenCubit extends Cubit<TopMangaScreenState> {
       if (pagination.hasNextPage == false) {
         isLastPage = true;
       }
+      // if(pagination.currentPage == 3) {
+      //   throw Exception('You shall not pass!');
+      // }
       allTopMangaList.addAll(topMangaList);
       page++;
       emit(
@@ -40,8 +43,7 @@ class TopMangaScreenCubit extends Cubit<TopMangaScreenState> {
         ),
       );
     } catch (e) {
-      //emit(TopMangaScreenError());
-      print('error: $e');
+      emit(TopMangaScreenError(e.toString()));
     } finally {
       isTopMangaFutureRunning = false;
     }

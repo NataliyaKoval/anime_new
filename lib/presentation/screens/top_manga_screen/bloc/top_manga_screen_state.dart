@@ -17,4 +17,8 @@ class TopMangaScreenLoaded extends TopMangaScreenState {
   final bool isLastPage;
 }
 
-class TopMangaScreenError extends TopMangaScreenState {}
+class TopMangaScreenError extends TopMangaScreenState {
+  TopMangaScreenError(this.errorMessage);
+
+  final String errorMessage;
+}
