@@ -1,8 +1,4 @@
-import 'package:anime_new/presentation/screens/animes_screen/widget/anime_screen.dart';
-import 'package:anime_new/presentation/screens/top_manga_screen/widget/top_manga_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_screen_state.dart';
 
@@ -11,9 +7,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
 
   int index = 0;
 
-
   Future<void> changeScreen(int newIndex) async {
-
     emit(
       HomeScreenState(
           selectedIndex: newIndex),

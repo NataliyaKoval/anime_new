@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
           builder: (BuildContext context) {
             return BlocBuilder<HomeScreenCubit, HomeScreenState>(
               builder: (BuildContext context, HomeScreenState state) {
-                //if (state is HomeScreenSelectedScreen) {
                   return Scaffold(
                     body: appScreens[state.selectedIndex],
                     bottomNavigationBar: NavigationBar(
@@ -37,9 +36,6 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   );
-                // } else {
-                //   return Container(color: Colors.greenAccent,);
-                // }
               },
             );
           }
