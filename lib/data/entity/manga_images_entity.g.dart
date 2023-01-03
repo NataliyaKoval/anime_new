@@ -8,9 +8,9 @@ part of 'manga_images_entity.dart';
 
 MangaImagesEntity _$MangaImagesEntityFromJson(Map<String, dynamic> json) =>
     MangaImagesEntity(
-      json['jpg'] == null
+      jpg: json['jpg'] == null
           ? null
-          : MangaJpg.fromJson(json['jpg'] as Map<String, dynamic>),
+          : MangaJpgEntity.fromJson(json['jpg'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MangaImagesEntityToJson(MangaImagesEntity instance) =>

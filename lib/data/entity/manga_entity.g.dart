@@ -11,7 +11,7 @@ MangaEntity _$MangaEntityFromJson(Map<String, dynamic> json) => MangaEntity(
       url: json['url'] as String,
       images: json['images'] == null
           ? null
-          : MangaImages.fromJson(json['images'] as Map<String, dynamic>),
+          : MangaImagesEntity.fromJson(json['images'] as Map<String, dynamic>),
       title: json['title'] as String,
       synopsis: json['synopsis'] as String?,
     );

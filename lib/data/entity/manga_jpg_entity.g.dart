@@ -8,8 +8,8 @@ part of 'manga_jpg_entity.dart';
 
 MangaJpgEntity _$MangaJpgEntityFromJson(Map<String, dynamic> json) =>
     MangaJpgEntity(
-      json['image_url'] as String?,
-      json['small_image_url'] as String?,
+      imageUrl: json['image_url'] as String?,
+      smallImageUrl: json['small_image_url'] as String?,
     );
 
 Map<String, dynamic> _$MangaJpgEntityToJson(MangaJpgEntity instance) =>

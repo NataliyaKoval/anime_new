@@ -1,4 +1,4 @@
-import 'package:anime_new/domain/models/anime_jpg.dart';
+import 'package:anime_new/domain/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'anime_jpg_entity.g.dart';

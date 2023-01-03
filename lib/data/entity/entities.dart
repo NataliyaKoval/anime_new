@@ -12,4 +12,5 @@ export 'character_jpg_entity.dart';
 export 'manga_entity.dart';
 export 'manga_images_entity.dart';
 export 'manga_jpg_entity.dart';
+export 'manga_pagination_entity.dart';
 export 'top_manga_response_body_entity.dart';

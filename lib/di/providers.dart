@@ -2,7 +2,7 @@ import 'package:anime_new/data/datasources/animes_remote_data_source.dart';
 import 'package:anime_new/data/datasources/characters_remote_data_source.dart';
 import 'package:anime_new/data/datasources/top_manga_remote_data_source.dart';
 import 'package:anime_new/data/repository/characters_repository_impl.dart';
-import 'package:anime_new/data/repository/repository.dart';
+import 'package:anime_new/data/repository/animes_repository_impl.dart';
 import 'package:anime_new/data/repository/top_manga_repository_impl.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/domain/repository/characters_repository.dart';
