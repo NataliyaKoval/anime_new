@@ -1,17 +1,24 @@
-import 'package:anime_new/data/datasources/animes_remote_data_source.dart';
-import 'package:anime_new/domain/models/anime.dart';
+import 'package:anime_new/data/datasources/rest_api_client.dart';
+import 'package:anime_new/data/entity/entities.dart';
+import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 
 class AnimesRepositoryImpl implements AnimesRepository {
   AnimesRepositoryImpl({
-    required this.remoteDataSource,
+    required this.restApiClient,
   });
 
-  final AnimesRemoteDataSource remoteDataSource;
+  final RestApiClient restApiClient;
 
   @override
-  Future<List<Anime>> fetchAnimes() {
-    return remoteDataSource.fetchAnimes();
+  Future<List<Anime>> fetchAnimes() async {
+    final AnimeResponseEntity result = await restApiClient.fetchAnimes();
+    return result.data;
   }
 
+  @override
+  Future<List<AnimeCharacter>> fetchCharacters(int id) async {
+    final AnimeCharacterResponseBodyEntity result = await restApiClient.fetchCharacters(id);
+    return result.data;
+  }
 }

@@ -23,7 +23,7 @@ class AnimeCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: [
+            children: <Widget>[
               Image.network(anime.images?.jpg.imageUrl ?? ''),
               const SizedBox(
                 height: 8.0,

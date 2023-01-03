@@ -1,5 +1,5 @@
 import 'package:anime_new/domain/models/models.dart';
-import 'package:anime_new/domain/repository/characters_repository.dart';
+import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/bloc/single_anime_screen_bloc.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/usecase/get_anime_characters.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_character_card.dart';
@@ -17,7 +17,7 @@ class SingleAnimeScreen extends StatelessWidget {
     return BlocProvider<SingleAnimeScreenBloc>(
       create: (BuildContext context) => SingleAnimeScreenBloc(
         getAnimeCharactersUsecase: GetAnimeCharactersUsecase(
-          charactersRepository: context.read<CharactersRepository>(),
+          animesRepository: context.read<AnimesRepository>(),
         ),
       )..add(GetAnimeCharacters(anime.id)),
       child: Scaffold(
