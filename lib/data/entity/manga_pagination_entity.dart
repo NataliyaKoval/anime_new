@@ -1,4 +1,4 @@
-import 'package:anime_new/domain/models/manga_pagination.dart';
+import 'package:anime_new/domain/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'manga_pagination_entity.g.dart';

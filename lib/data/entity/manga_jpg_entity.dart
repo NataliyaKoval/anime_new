@@ -5,11 +5,14 @@ part 'manga_jpg_entity.g.dart';
 
 @JsonSerializable()
 class MangaJpgEntity implements MangaJpg {
-
-  MangaJpgEntity(this.imageUrl, this.smallImageUrl);
+  MangaJpgEntity({
+    this.imageUrl,
+    this.smallImageUrl,
+  });
 
   //flutter pub run build_runner build
-  factory MangaJpgEntity.fromJson(Map<String, dynamic> json) => _$MangaJpgEntityFromJson(json);
+  factory MangaJpgEntity.fromJson(Map<String, dynamic> json) =>
+      _$MangaJpgEntityFromJson(json);
 
   @override
   @JsonKey(name: 'image_url')

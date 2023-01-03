@@ -1,3 +1,4 @@
+import 'package:anime_new/data/entity/entities.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -28,7 +29,7 @@ class MangaEntity implements Manga {
 
   @override
   @JsonKey(name: 'images')
-  final MangaImages? images;
+  final MangaImagesEntity? images;
 
   @override
   @JsonKey(name: 'title')
