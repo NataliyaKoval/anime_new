@@ -1,8 +1,7 @@
-import 'package:anime_new/domain/models/manga_pagination.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/usecase/get_top_manga.dart';
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 part 'top_manga_screen_state.dart';
 
@@ -11,8 +10,8 @@ class TopMangaScreenCubit extends Cubit<TopMangaScreenState> {
       : super(TopMangaScreenInitial());
 
   final GetTopMangaUsecase getTopMangaUsecase;
-  int page = 1;
-  //int page = 4228;
+  //int page = 1;
+  int page = 4265;
   bool isLastPage = false;
   List<Manga> allTopMangaList = <Manga>[];
   bool isTopMangaFutureRunning = false;

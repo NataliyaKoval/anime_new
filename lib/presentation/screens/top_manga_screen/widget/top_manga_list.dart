@@ -33,27 +33,28 @@ class _TopMangaListState extends State<TopMangaList> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return GridView.builder(
       controller: _scrollController,
       itemCount: widget.topMangaList.length + 1,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+        childAspectRatio: (1 / 1.4),
+      ),
       itemBuilder: (BuildContext context, int index) {
         if (index < widget.topMangaList.length) {
-          return SizedBox(
-            height: 120,
-            child: Card(
-              color: Colors.black,
-              semanticContainer: true,
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Text(
-                widget.topMangaList[index].title,
-                style: const TextStyle(color: Colors.white, fontSize: 30),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              elevation: 5,
-            ),
+          return Card(
+            child: widget.topMangaList[index].images?.jpg?.imageUrl != null
+                ? Image.network(widget.topMangaList[index].images!.jpg!.imageUrl!)
+                : Container(),
           );
         } else {
           return Center(
@@ -65,9 +66,48 @@ class _TopMangaListState extends State<TopMangaList> {
                 : const CircularProgressIndicator(),
           );
         }
+
       },
-      separatorBuilder: (BuildContext context, int index) =>
-          const SizedBox(height: 20),
     );
+    // return ListView.separated(
+    //   controller: _scrollController,
+    //   itemCount: widget.topMangaList.length + 1,
+    //   itemBuilder: (BuildContext context, int index) {
+    //     if (index < widget.topMangaList.length) {
+    //       return SizedBox(
+    //         height: 120,
+    //         child: Card(
+    //           // color: Colors.black,
+    //           // semanticContainer: true,
+    //           // clipBehavior: Clip.antiAliasWithSaveLayer,
+    //           child: widget.topMangaList[index].images?.jpg?.imageUrl != null
+    //               ? Image.network(
+    //                   widget.topMangaList[index].images!.jpg!.imageUrl!)
+    //               : Container(),
+    //
+    //           // child: Text(
+    //           //   widget.topMangaList[index].title,
+    //           //   style: const TextStyle(fontSize: 30),
+    //           // ),
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(10.0),
+    //           ),
+    //           elevation: 5,
+    //         ),
+    //       );
+    //     } else {
+    //       return Center(
+    //         child: widget.isLastPage
+    //             ? const Text(
+    //                 'You\'ve reached the end of the list',
+    //                 style: TextStyle(fontSize: 22),
+    //               )
+    //             : const CircularProgressIndicator(),
+    //       );
+    //     }
+    //   },
+    //   separatorBuilder: (BuildContext context, int index) =>
+    //       const SizedBox(height: 20),
+    // );
   }
 }
