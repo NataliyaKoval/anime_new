@@ -1,4 +1,3 @@
-import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/top_manga_repository.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/bloc/top_manga_screen_cubit.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/usecase/get_top_manga.dart';

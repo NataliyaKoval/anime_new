@@ -1,5 +1,4 @@
 import 'package:anime_new/domain/models/anime_images.dart';
-import 'package:equatable/equatable.dart';
 
 class Anime {
   const Anime({
