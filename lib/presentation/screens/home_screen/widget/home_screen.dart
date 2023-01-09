@@ -1,4 +1,5 @@
 import 'package:anime_new/presentation/screens/animes_screen/widget/anime_screen.dart';
+import 'package:anime_new/presentation/screens/favorites_screen/widget/favorites_screen.dart';
 import 'package:anime_new/presentation/screens/home_screen/bloc/home_screen_cubit.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/widget/top_manga_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   final List<Widget> appScreens = <Widget>[
     const AnimeScreen(),
     const TopMangaScreen(),
+    const FavoritesScreen(),
   ];
 
   @override
@@ -33,6 +35,8 @@ class HomeScreen extends StatelessWidget {
                             icon: Icon(Icons.videocam), label: 'Anime'),
                         NavigationDestination(
                             icon: Icon(Icons.book), label: 'Manga'),
+                        NavigationDestination(
+                            icon: Icon(Icons.favorite), label: 'Favorites'),
                       ],
                     ),
                   );

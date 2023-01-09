@@ -11,7 +11,6 @@ class SingleAnimeScreenCharactersLoaded extends SingleAnimeScreenState {
   SingleAnimeScreenCharactersLoaded(this.charactersList);
 
   final List<AnimeCharacter> charactersList;
-
 }
 
 class SingleAnimeScreenError extends SingleAnimeScreenState {}
