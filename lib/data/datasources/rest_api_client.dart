@@ -17,7 +17,7 @@ abstract class RestApiClient {
   @GET('/anime/{id}/characters')
   Future<AnimeCharacterResponseBodyEntity> fetchCharacters(@Path('id') int id);
 
-  @GET('/top/manga?limit=$_limit&page={page}')
+  @GET('/top/manga?limit=$_limit')
   Future<TopMangaResponseBodyEntity> fetchMangas(
-      @Path('page') int page);
+      @Query('page') int page);
 }
