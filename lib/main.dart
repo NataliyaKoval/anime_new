@@ -1,8 +1,10 @@
+import 'package:anime_new/data/entity/entities.dart';
 import 'package:anime_new/di/providers.dart';
 import 'package:anime_new/presentation/screens/home_screen/widget/home_screen.dart';
 import 'package:anime_new/providers/theme_provider.dart';
 import 'package:anime_new/themes/theme_data.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'database/app_preferences.dart';
@@ -10,7 +12,13 @@ import 'database/app_preferences.dart';
 // void main() {
 //   runApp(const MyApp());
 // }
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter<AnimeEntity>(AnimeEntityAdapter());
+  Hive.registerAdapter<AnimeImagesEntity>(AnimeImagesEntityAdapter());
+  Hive.registerAdapter<AnimeJpgEntity>(AnimeJpgEntityAdapter());
+  Box box = await Hive.openBox<AnimeEntity>('favoriteAnimes');
+  
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<ThemeProvider>(
       create: (_) => ThemeProvider(),
@@ -52,7 +60,6 @@ class _MyAppState extends State<MyApp> {
             .themeMode,
         home: Scaffold(
           appBar: AppBar(),
-          //body: const AnimeScreen(),
           body: HomeScreen(),
         ),
         // home: FutureBuilder(

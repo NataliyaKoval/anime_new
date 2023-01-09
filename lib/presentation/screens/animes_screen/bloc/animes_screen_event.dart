@@ -5,6 +5,4 @@ abstract class AnimesScreenEvent {
   const AnimesScreenEvent();
 }
 
-class GetBestAnimes extends AnimesScreenEvent {
-
-}
+class GetBestAnimes extends AnimesScreenEvent {}

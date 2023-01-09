@@ -43,11 +43,11 @@ class _TopMangaListState extends State<TopMangaList> {
     return GridView.builder(
       controller: _scrollController,
       itemCount: widget.topMangaList.length + 1,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: (1 / 1.4),
+        childAspectRatio: 1 / 1.4,
       ),
       itemBuilder: (BuildContext context, int index) {
         if (index < widget.topMangaList.length) {

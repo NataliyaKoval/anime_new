@@ -1,3 +1,4 @@
+import 'package:anime_new/data/datasources/local_database.dart';
 import 'package:anime_new/data/datasources/rest_api_client.dart';
 import 'package:anime_new/data/repository/animes_repository_impl.dart';
 import 'package:anime_new/data/repository/top_manga_repository_impl.dart';
@@ -18,9 +19,13 @@ class Providers {
             context.read<Dio>(),
           ),
         ),
+        Provider<LocalDatabase>(
+          create: (BuildContext context) => LocalDatabase(),
+        ),
         Provider<AnimesRepository>(
           create: (BuildContext context) => AnimesRepositoryImpl(
             restApiClient: context.read<RestApiClient>(),
+            localDatabase: context.read<LocalDatabase>(),
           ),
         ),
         Provider<TopMangaRepository>(

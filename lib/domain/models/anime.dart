@@ -9,6 +9,7 @@ class Anime {
     required this.titleJapanese,
     required this.synopsis,
     this.year,
+    this.isFavorite = false,
   });
 
   final int id;
@@ -18,4 +19,5 @@ class Anime {
   final String titleJapanese;
   final String synopsis;
   final int? year;
+  final bool isFavorite;
 }
