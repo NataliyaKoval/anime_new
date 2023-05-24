@@ -3,6 +3,62 @@
 part of 'anime_entity.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class AnimeEntityAdapter extends TypeAdapter<AnimeEntity> {
+  @override
+  final int typeId = 1;
+
+  @override
+  AnimeEntity read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AnimeEntity(
+      id: fields[0] as int,
+      url: fields[1] as String,
+      title: fields[2] as String,
+      images: fields[3] as AnimeImagesEntity?,
+      titleJapanese: fields[4] as String,
+      synopsis: fields[5] as String,
+      year: fields[6] as int?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AnimeEntity obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.url)
+      ..writeByte(2)
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.images)
+      ..writeByte(4)
+      ..write(obj.titleJapanese)
+      ..writeByte(5)
+      ..write(obj.synopsis)
+      ..writeByte(6)
+      ..write(obj.year);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AnimeEntityAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

@@ -69,7 +69,7 @@ class _RestApiClient implements RestApiClient {
   @override
   Future<TopMangaResponseBodyEntity> fetchMangas(page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -80,7 +80,7 @@ class _RestApiClient implements RestApiClient {
     )
             .compose(
               _dio.options,
-              '/top/manga?limit=10&page=${page}',
+              '/top/manga?limit=10',
               queryParameters: queryParameters,
               data: _data,
             )
