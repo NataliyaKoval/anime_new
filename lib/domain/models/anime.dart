@@ -20,4 +20,26 @@ class Anime {
   final String synopsis;
   final int? year;
   final bool isFavorite;
+
+  Anime copyWith({
+    int? id,
+    String? url,
+    String? title,
+    AnimeImages? images,
+    String? titleJapanese,
+    String? synopsis,
+    int? year,
+    bool? isFavorite,
+  }) {
+    return Anime(
+      id: id ?? this.id,
+      url: url ?? this.url,
+      title: title ?? this.title,
+      images: images ?? this.images,
+      titleJapanese: titleJapanese ?? this.titleJapanese,
+      synopsis: synopsis ?? this.synopsis,
+      year: year ?? this.year,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }

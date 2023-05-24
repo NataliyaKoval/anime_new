@@ -6,3 +6,9 @@ abstract class AnimesScreenEvent {
 }
 
 class GetBestAnimes extends AnimesScreenEvent {}
+
+class AnimeChanged extends AnimesScreenEvent {
+  const AnimeChanged(this.anime);
+
+  final Anime anime;
+}

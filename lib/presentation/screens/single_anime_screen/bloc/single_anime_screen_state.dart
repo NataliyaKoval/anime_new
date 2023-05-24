@@ -5,6 +5,12 @@ abstract class SingleAnimeScreenState {}
 
 class SingleAnimeScreenInitial extends SingleAnimeScreenState {}
 
+class SingleAnimeScreenChanged extends SingleAnimeScreenState {
+  SingleAnimeScreenChanged(this.anime);
+
+  final Anime anime;
+}
+
 class SingleAnimeScreenCharactersLoading extends SingleAnimeScreenState {}
 
 class SingleAnimeScreenCharactersLoaded extends SingleAnimeScreenState {
@@ -14,4 +20,3 @@ class SingleAnimeScreenCharactersLoaded extends SingleAnimeScreenState {
 }
 
 class SingleAnimeScreenError extends SingleAnimeScreenState {}
-

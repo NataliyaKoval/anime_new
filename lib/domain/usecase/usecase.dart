@@ -5,4 +5,3 @@ abstract class UseCase<Type, Params> {
 abstract class NoParamsUseCase<Type> {
   Future<Type> call();
 }
-

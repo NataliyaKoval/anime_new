@@ -14,11 +14,13 @@ class SingleAnimeScreenBloc
   SingleAnimeScreenBloc({
     required this.getAnimeCharactersUsecase,
     required this.toggleFavoritesUsecase,
+    required this.anime,
   }) : super(SingleAnimeScreenInitial()) {
     on<GetAnimeCharacters>(_getAnimeCharacters);
     on<ToggleFavoritesEvent>(_toggleFavorites);
   }
 
+  late Anime anime;
   final GetAnimeCharactersUsecase getAnimeCharactersUsecase;
   final ToggleFavoritesUsecase toggleFavoritesUsecase;
 
@@ -37,7 +39,8 @@ class SingleAnimeScreenBloc
   Future<void> _toggleFavorites(
       ToggleFavoritesEvent event, Emitter<SingleAnimeScreenState> emit) async {
     try {
-      toggleFavoritesUsecase.call(event.anime);
+      anime = await toggleFavoritesUsecase.call(anime);
+      emit(SingleAnimeScreenChanged(anime));
     } catch (e) {
       emit(SingleAnimeScreenError());
     }

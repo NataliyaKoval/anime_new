@@ -1,5 +1,6 @@
 import 'package:anime_new/data/entity/anime_images_entity.dart';
 import 'package:anime_new/domain/models/anime.dart';
+import 'package:anime_new/domain/models/models.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -9,15 +10,16 @@ part 'anime_entity.g.dart';
 @HiveType(typeId: 1)
 @JsonSerializable()
 class AnimeEntity implements Anime {
-  const AnimeEntity(
-      {required this.id,
-      required this.url,
-      required this.title,
-      this.images,
-      required this.titleJapanese,
-      required this.synopsis,
-      this.year,
-      this.isFavorite = false});
+  const AnimeEntity({
+    required this.id,
+    required this.url,
+    required this.title,
+    this.images,
+    required this.titleJapanese,
+    required this.synopsis,
+    this.year,
+    this.isFavorite = false,
+  });
 
   //flutter pub run build_runner build
   factory AnimeEntity.fromJson(Map<String, dynamic> json) =>
@@ -27,8 +29,10 @@ class AnimeEntity implements Anime {
         id: anime.id,
         url: anime.url,
         title: anime.title,
+        //images: anime.images,
         titleJapanese: anime.titleJapanese,
         synopsis: anime.synopsis,
+        year: anime.year,
       );
 
   @HiveField(0)
@@ -66,14 +70,16 @@ class AnimeEntity implements Anime {
   @JsonKey(name: 'year')
   final int? year;
 
+  @override
   @JsonKey(ignore: true)
   final bool isFavorite;
 
+  @override
   AnimeEntity copyWith({
     int? id,
     String? url,
     String? title,
-    AnimeImagesEntity? images,
+    AnimeImages? images,
     String? titleJapanese,
     String? synopsis,
     int? year,
@@ -83,7 +89,7 @@ class AnimeEntity implements Anime {
       id: id ?? this.id,
       url: url ?? this.url,
       title: title ?? this.title,
-      images: images ?? this.images,
+      images: images as AnimeImagesEntity? ?? this.images,
       titleJapanese: titleJapanese ?? this.titleJapanese,
       synopsis: synopsis ?? this.synopsis,
       year: year ?? this.year,

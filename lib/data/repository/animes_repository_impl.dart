@@ -22,7 +22,7 @@ class AnimesRepositoryImpl implements AnimesRepository {
       if (keys.contains(e.id)) {
         return e.copyWith(isFavorite: true);
       } else {
-        return e.copyWith();
+        return e;
       }
     }).toList();
   }
