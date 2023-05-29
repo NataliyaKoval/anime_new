@@ -20,15 +20,13 @@ class FavoritesScreen extends StatelessWidget {
           builder: (BuildContext context, FavoritesScreenState state) {
             if (state is FavoritesScreenLoaded) {
               return ListView.builder(
-                itemCount: state.favoriteAnimes?.length,
+                itemCount: state.favoriteAnimes!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (state.favoriteAnimes != null) {
-                    return Text(state.favoriteAnimes![index].title);
-                  } else {
-                    return const Text('no title');
-                  }
+                  return Text(state.favoriteAnimes![index].title);
                 },
               );
+            } else if (state is FavoritesScreenEmpty) {
+              return const Center(child: Text('No favorite animes yet'));
             } else {
               return const CircularProgressIndicator();
             }

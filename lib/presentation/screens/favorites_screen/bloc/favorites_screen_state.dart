@@ -13,6 +13,8 @@ class FavoritesScreenLoaded extends FavoritesScreenState {
   final List<Anime>? favoriteAnimes;
 }
 
+class FavoritesScreenEmpty extends FavoritesScreenState {}
+
 class FavoritesScreenError extends FavoritesScreenState {
   FavoritesScreenError(this.errorMessage);
 
