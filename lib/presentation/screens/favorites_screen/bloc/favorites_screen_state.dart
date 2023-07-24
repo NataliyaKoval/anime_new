@@ -10,7 +10,7 @@ class FavoritesScreenLoaded extends FavoritesScreenState {
     required this.favoriteAnimes,
   });
 
-  final List<Anime>? favoriteAnimes;
+  final List<Anime> favoriteAnimes;
 }
 
 class FavoritesScreenEmpty extends FavoritesScreenState {}

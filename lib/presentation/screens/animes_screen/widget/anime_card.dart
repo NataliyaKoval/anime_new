@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AnimeCard extends StatelessWidget {
-
   const AnimeCard({Key? key, required this.anime}) : super(key: key);
 
   final Anime anime;
@@ -17,9 +16,10 @@ class AnimeCard extends StatelessWidget {
         final Anime? resultAnime = await Navigator.push<Anime>(
           context,
           MaterialPageRoute<Anime>(
-              builder: (BuildContext context) => SingleAnimeScreen(anime: anime)),
+              builder: (BuildContext context) =>
+                  SingleAnimeScreen(anime: anime)),
         );
-        if(resultAnime != null) {
+        if (resultAnime != null) {
           context.read<AnimesScreenBloc>().add(AnimeChanged(resultAnime));
         }
       },
