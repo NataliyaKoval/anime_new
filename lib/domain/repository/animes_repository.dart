@@ -7,9 +7,9 @@ abstract class AnimesRepository {
 
   void addToFavorites(Anime anime);
 
-  void removeFromFavorites(Anime anime);
+  void removeFromFavorites(int id);
 
-  List<Anime>? getFavoriteAnimes();
+  List<Anime> getFavoriteAnimes();
 
   List? getFavoriteAnimesKeys();
 }

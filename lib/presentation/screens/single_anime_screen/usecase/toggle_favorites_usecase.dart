@@ -15,7 +15,7 @@ class ToggleFavoritesUsecase extends UseCase<Anime, Anime> {
       animesRepository.addToFavorites(params);
       return params.copyWith(isFavorite: true);
     } else {
-      animesRepository.removeFromFavorites(params);
+      animesRepository.removeFromFavorites(params.id);
       return params.copyWith(isFavorite: false);
     }
   }

@@ -41,13 +41,13 @@ class AnimesRepositoryImpl implements AnimesRepository {
   }
 
   @override
-  List<Anime>? getFavoriteAnimes() {
+  List<Anime> getFavoriteAnimes() {
     return localDatabase.getFavoriteAnimes();
   }
 
   @override
-  void removeFromFavorites(Anime anime) {
-    localDatabase.removeFromFavorites(anime.id);
+  void removeFromFavorites(int id) {
+    localDatabase.removeFromFavorites(id);
   }
 
   @override

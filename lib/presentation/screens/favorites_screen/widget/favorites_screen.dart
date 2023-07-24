@@ -1,5 +1,6 @@
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/favorites_screen/bloc/favorites_screen_cubit.dart';
+import 'package:anime_new/presentation/screens/favorites_screen/usecase/delete_from_favorites_usecase.dart';
 import 'package:anime_new/presentation/screens/favorites_screen/usecase/get_favorite_animes_usecase.dart';
 import 'package:anime_new/presentation/screens/favorites_screen/widget/favorite_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,9 @@ class FavoritesScreen extends StatelessWidget {
         create: (BuildContext context) => FavoritesScreenCubit(
           getFavoriteAnimesUsecase: GetFavoriteAnimesUsecase(
             repository: context.read<AnimesRepository>(),
-          ),
+          ), deleteFomFavoritesUseCase: DeleteFomFavoritesUseCase(
+          animesRepository: context.read<AnimesRepository>(),
+        ),
         )..getFavoriteAnimes(),
         child: BlocBuilder<FavoritesScreenCubit, FavoritesScreenState>(
           builder: (BuildContext context, FavoritesScreenState state) {
