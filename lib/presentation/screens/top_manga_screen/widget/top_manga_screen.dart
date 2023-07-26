@@ -1,4 +1,6 @@
+import 'package:anime_new/consts/strings.dart';
 import 'package:anime_new/domain/repository/top_manga_repository.dart';
+import 'package:anime_new/presentation/screens/home_screen/bloc/home_screen_cubit.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/bloc/top_manga_screen_cubit.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/usecase/get_top_manga.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/widget/top_manga_list.dart';
@@ -31,27 +33,45 @@ class TopMangaScreen extends StatelessWidget {
             return next is! TopMangaScreenError;
           },
           builder: (BuildContext context, TopMangaScreenState state) {
-            if (state is TopMangaScreenLoaded) {
-              return TopMangaList(
-                topMangaList: state.topMangaList,
-                isLastPage: state.isLastPage,
-                onFinishingScroll: () =>
-                    context.read<TopMangaScreenCubit>().getTopManga(),
-              );
-            } else if (state is TopMangaScreenError) {
-              return Center(
-                child: ElevatedButton(
-                  child: const Text('Retry'),
-                  onPressed: () {
-                    context.read<TopMangaScreenCubit>().getTopManga();
-                  },
+            return WillPopScope(
+              onWillPop: () {
+                context.read<HomeScreenCubit>().changeScreen(0);
+                return Future<bool>.value(false);
+              },
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(Strings.topMangaScreenStrings.title),
                 ),
-              );
-            }
-            return const Center(child: CircularProgressIndicator());
+                body: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: _buildBody(context, state),
+                ),
+              ),
+            );
           },
         );
       }),
     );
+  }
+
+  Widget _buildBody(BuildContext context, TopMangaScreenState state) {
+    if (state is TopMangaScreenLoaded) {
+      return TopMangaList(
+        topMangaList: state.topMangaList,
+        isLastPage: state.isLastPage,
+        onFinishingScroll: () =>
+            context.read<TopMangaScreenCubit>().getTopManga(),
+      );
+    } else if (state is TopMangaScreenError) {
+      return Center(
+        child: ElevatedButton(
+          child: const Text('Retry'),
+          onPressed: () {
+            context.read<TopMangaScreenCubit>().getTopManga();
+          },
+        ),
+      );
+    }
+    return const Center(child: CircularProgressIndicator());
   }
 }

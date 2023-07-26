@@ -8,7 +8,7 @@ class GetFavoriteAnimesUsecase extends NoParamsUseCase<List<Anime>?> {
   final AnimesRepository repository;
 
   @override
-  Future<List<Anime>?> call() async {
+  Future<List<Anime>> call() async {
     return repository.getFavoriteAnimes();
   }
 }
