@@ -59,8 +59,10 @@ class FavoritesScreen extends StatelessWidget {
         },
       );
     } else if (state is FavoritesScreenEmpty) {
-      return const Center(
-        child: Text('No favorite animes yet'),
+      return Center(
+        child: Text(
+          Strings.favoritesScreenStrings.noFavorites,
+        ),
       );
     } else {
       return const Center(

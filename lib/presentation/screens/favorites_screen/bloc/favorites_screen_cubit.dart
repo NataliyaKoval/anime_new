@@ -34,7 +34,11 @@ class FavoritesScreenCubit extends Cubit<FavoritesScreenState> {
     try {
       deleteFomFavoritesUseCase.call(id);
       favoriteAnimes.removeWhere((Anime element) => element.id == id);
-      emit(FavoritesScreenLoaded(favoriteAnimes: favoriteAnimes));
+      if (favoriteAnimes.isNotEmpty) {
+        emit(FavoritesScreenLoaded(favoriteAnimes: favoriteAnimes));
+      } else {
+        emit(FavoritesScreenEmpty());
+      }
     } catch (e) {
       emit(FavoritesScreenError(e.toString()));
     }
