@@ -1,3 +1,4 @@
+import 'package:anime_new/consts/strings.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/favorites_screen/bloc/favorites_screen_cubit.dart';
 import 'package:anime_new/presentation/screens/favorites_screen/usecase/delete_from_favorites_usecase.dart';
@@ -29,6 +30,11 @@ class FavoritesScreen extends StatelessWidget {
             return Future<bool>.value(false);
           },
           child: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                Strings.favoritesScreenStrings.title,
+              ),
+            ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: _buildBody(context, state),

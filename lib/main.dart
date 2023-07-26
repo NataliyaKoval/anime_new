@@ -43,10 +43,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Anime',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        home: Scaffold(
-          appBar: AppBar(),
-          body: HomeScreen(),
-        ),
+        home: HomeScreen(),
       ),
     );
   }
