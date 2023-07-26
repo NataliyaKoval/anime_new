@@ -2,7 +2,7 @@ part of 'home_screen_cubit.dart';
 
 class HomeScreenState {
   HomeScreenState({
-    required this.selectedIndex,
+    this.selectedIndex = 0,
   });
 
   final int selectedIndex;
