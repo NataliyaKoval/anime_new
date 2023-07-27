@@ -1,3 +1,4 @@
+import 'package:anime_new/consts/color_consts.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/bloc/single_anime_screen_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:anime_new/presentation/screens/single_anime_screen/usecase/get_a
 import 'package:anime_new/presentation/screens/single_anime_screen/usecase/toggle_favorites_usecase.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_character_card.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_synopsis.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,11 +74,13 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: Column(children: <Widget>[
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
                     Text(
                       widget.anime.title,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                     const SizedBox(
                       height: 8,
@@ -84,7 +88,7 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
                     Text(
                       widget.anime.titleJapanese,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     const SizedBox(
                       height: 8,
@@ -95,13 +99,14 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
                     ),
                     Row(
                       children: <Widget>[
-                        Text('Year:',
-                            style: Theme.of(context).textTheme.headline3),
+                        const SubtitleText(
+                          subtitle: 'Year:',
+                        ),
                         const SizedBox(
                           width: 5,
                         ),
                         Text(widget.anime.year.toString(),
-                            style: Theme.of(context).textTheme.bodyText1),
+                            style: Theme.of(context).textTheme.bodyLarge),
                       ],
                     ),
                     const SizedBox(
@@ -109,6 +114,18 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
                     ),
                     AnimeSynopsis(
                       anime: widget.anime,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Align(
+                      alignment: Alignment.bottomLeft,
+                      child: SubtitleText(
+                        subtitle: 'Characters:',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
                     ),
                     Builder(builder: (BuildContext context) {
                       return Container(
@@ -124,10 +141,15 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
                               final List<AnimeCharacter> animeCharacters =
                                   state.charactersList;
                               return Container(
-                                height: 200,
-                                child: ListView.builder(
+                                height: 300,
+                                child: ListView.separated(
                                     scrollDirection: Axis.horizontal,
                                     itemCount: animeCharacters.length,
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            const SizedBox(
+                                              width: 6,
+                                            ),
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return AnimeCharacterCard(
@@ -151,15 +173,15 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
             floatingActionButton: isFabVisible
                 ? Builder(builder: (BuildContext context) {
                     return FloatingActionButton(
-                      backgroundColor: Colors.yellow,
+                      backgroundColor: AppColors.purple,
                       child: Icon(
                         Icons.favorite,
                         size: 40,
                         color: context.select<SingleAnimeScreenBloc, bool>(
                                 (SingleAnimeScreenBloc bloc) =>
                                     bloc.anime.isFavorite)
-                            ? Colors.red
-                            : Colors.black,
+                            ? AppColors.lightOrange
+                            : AppColors.white,
                       ),
                       onPressed: () {
                         context
