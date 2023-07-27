@@ -1,6 +1,7 @@
+import 'package:anime_new/consts/color_consts.dart';
+import 'package:anime_new/consts/strings.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:flutter/material.dart';
-
 
 class AnimeSynopsis extends StatefulWidget {
   const AnimeSynopsis({Key? key, required this.anime}) : super(key: key);
@@ -22,19 +23,29 @@ class _AnimeSynopsisState extends State<AnimeSynopsis> {
           isSynopsisReduced = !isSynopsisReduced;
         });
       },
-      child: SizedBox(
-        height: isSynopsisReduced ? 90 : null,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: RichText(
           maxLines: isSynopsisReduced ? 4 : null,
-          overflow: isSynopsisReduced ? TextOverflow.ellipsis : TextOverflow.visible,
-          text: TextSpan(
-              style: Theme.of(context).textTheme.bodyText2,
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'Synopsis: ',
-                    style: Theme.of(context).textTheme.headline3),
-                TextSpan(text: widget.anime.synopsis,),
-              ]),
+          overflow:
+              isSynopsisReduced ? TextOverflow.ellipsis : TextOverflow.visible,
+          text: TextSpan(children: <TextSpan>[
+            TextSpan(
+              text: Strings.animesPageStrings.synopsis,
+              style: const TextStyle(
+                color: AppColors.purple,
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: widget.anime.synopsis,
+              style: const TextStyle(
+                color: AppColors.black,
+                fontSize: 24,
+              ),
+            ),
+          ]),
         ),
       ),
     );

@@ -1,10 +1,15 @@
+import 'package:anime_new/consts/color_consts.dart';
+import 'package:anime_new/consts/strings.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/domain/repository/animes_repository.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/bloc/single_anime_screen_bloc.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/usecase/get_anime_characters.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/usecase/toggle_favorites_usecase.dart';
-import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_character_card.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_characters_list.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_synopsis.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_title.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/common_text.dart';
+import 'package:anime_new/presentation/screens/single_anime_screen/widget/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,138 +45,122 @@ class _SingleAnimeScreenState extends State<SingleAnimeScreen> {
             return false;
           },
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.anime.title),
-              automaticallyImplyLeading: false,
-              leading: IconButton(
-                onPressed: () {
-                  final Anime anime =
-                      context.read<SingleAnimeScreenBloc>().anime;
-                  Navigator.of(context).pop(anime);
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                  size: 30,
-                ),
-              ),
-            ),
+            appBar: _buildAppBar(context),
+            floatingActionButton: _buildFab(context),
             body: NotificationListener<UserScrollNotification>(
-              onNotification: (UserScrollNotification notification) {
-                if (notification.direction == ScrollDirection.forward) {
-                  setState(() {
-                    isFabVisible = true;
-                  });
-                } else if (notification.direction == ScrollDirection.reverse) {
-                  setState(() {
-                    isFabVisible = false;
-                  });
-                }
-                return true;
-              },
+              onNotification: (UserScrollNotification notification) =>
+                  _onDirectionChange(notification),
               child: SingleChildScrollView(
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: Column(children: <Widget>[
-                    Text(
-                      widget.anime.title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      widget.anime.titleJapanese,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Image.network(widget.anime.images?.jpg.imageUrl ?? ''),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text('Year:',
-                            style: Theme.of(context).textTheme.headline3),
-                        const SizedBox(
-                          width: 5,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      AnimeTitle(
+                        text: widget.anime.titleJapanese,
+                      ),
+                      Image.network(widget.anime.images?.jpg.imageUrl ?? ''),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SubtitleText(
+                            subtitle: Strings.animesPageStrings.year,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          CommonText(text: widget.anime.year.toString()),
+                        ],
+                      ),
+                      AnimeSynopsis(anime: widget.anime),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: SubtitleText(
+                          subtitle: Strings.animesPageStrings.characters,
                         ),
-                        Text(widget.anime.year.toString(),
-                            style: Theme.of(context).textTheme.bodyText1),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    AnimeSynopsis(
-                      anime: widget.anime,
-                    ),
-                    Builder(builder: (BuildContext context) {
-                      return Container(
-                        child: BlocBuilder<SingleAnimeScreenBloc,
-                            SingleAnimeScreenState>(
-                          buildWhen: (SingleAnimeScreenState prev,
-                              SingleAnimeScreenState next) {
-                            return next is! SingleAnimeScreenChanged;
-                          },
-                          builder: (BuildContext context,
-                              SingleAnimeScreenState state) {
-                            if (state is SingleAnimeScreenCharactersLoaded) {
-                              final List<AnimeCharacter> animeCharacters =
-                                  state.charactersList;
-                              return Container(
-                                height: 200,
-                                child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: animeCharacters.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return AnimeCharacterCard(
-                                        animeCharacter: animeCharacters[index],
-                                      );
-                                    }),
-                              );
-                            } else if (state is SingleAnimeScreenError) {
-                              return const Text('SingleAnimeScreenError');
-                            }
-                            return const CircularProgressIndicator();
-                          },
-                        ),
-                      );
-                    }),
-                    //AnimeCharactersList(anime: anime),
-                  ]),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      BlocBuilder<SingleAnimeScreenBloc,
+                          SingleAnimeScreenState>(
+                        buildWhen: (SingleAnimeScreenState prev,
+                            SingleAnimeScreenState next) {
+                          return next is! SingleAnimeScreenChanged;
+                        },
+                        builder: (BuildContext context,
+                            SingleAnimeScreenState state) {
+                          if (state is SingleAnimeScreenCharactersLoaded) {
+                            return AnimeCharactersList(
+                                characters: state.charactersList);
+                          }
+                          return const CircularProgressIndicator();
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-            floatingActionButton: isFabVisible
-                ? Builder(builder: (BuildContext context) {
-                    return FloatingActionButton(
-                      backgroundColor: Colors.yellow,
-                      child: Icon(
-                        Icons.favorite,
-                        size: 40,
-                        color: context.select<SingleAnimeScreenBloc, bool>(
-                                (SingleAnimeScreenBloc bloc) =>
-                                    bloc.anime.isFavorite)
-                            ? Colors.red
-                            : Colors.black,
-                      ),
-                      onPressed: () {
-                        context
-                            .read<SingleAnimeScreenBloc>()
-                            .add(ToggleFavoritesEvent(anime: widget.anime));
-                      },
-                    );
-                  })
-                : null,
           ),
         );
       }),
     );
+  }
+
+  bool _onDirectionChange(UserScrollNotification notification) {
+    if (notification.direction == ScrollDirection.forward) {
+      setState(() {
+        isFabVisible = true;
+      });
+    } else if (notification.direction == ScrollDirection.reverse) {
+      setState(() {
+        isFabVisible = false;
+      });
+    }
+    return true;
+  }
+
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Text(widget.anime.title),
+      automaticallyImplyLeading: false,
+      leading: IconButton(
+        onPressed: () {
+          final Anime anime = context.read<SingleAnimeScreenBloc>().anime;
+          Navigator.of(context).pop(anime);
+        },
+        icon: const Icon(
+          Icons.arrow_back,
+          size: 30,
+        ),
+      ),
+    );
+  }
+
+  Widget? _buildFab(BuildContext context) {
+    if (isFabVisible) {
+      return FloatingActionButton(
+        backgroundColor: AppColors.purple,
+        child: Icon(
+          Icons.favorite,
+          size: 40,
+          color: context.select<SingleAnimeScreenBloc, bool>(
+                  (SingleAnimeScreenBloc bloc) => bloc.anime.isFavorite)
+              ? AppColors.lightOrange
+              : AppColors.white,
+        ),
+        onPressed: () {
+          context
+              .read<SingleAnimeScreenBloc>()
+              .add(ToggleFavoritesEvent(anime: widget.anime));
+        },
+      );
+    } else {
+      return null;
+    }
   }
 }

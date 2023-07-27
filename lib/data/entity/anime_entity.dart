@@ -1,5 +1,4 @@
 import 'package:anime_new/data/entity/anime_images_entity.dart';
-import 'package:anime_new/domain/models/anime.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
