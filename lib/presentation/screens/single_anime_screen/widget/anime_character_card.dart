@@ -1,5 +1,4 @@
 import 'package:anime_new/consts/app_images.dart';
-import 'package:anime_new/consts/color_consts.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -13,21 +12,15 @@ class AnimeCharacterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 150,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        border: Border.all(
-          width: 2,
-          color: AppColors.purple,
-        ),
-      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
-              animeCharacter.character.images?.jpg?.imageUrl ??
-                  AppImages.defaultImage,
+            child: FadeInImage.assetNetwork(
               fit: BoxFit.fitHeight,
+              placeholder: 'assets/images/placeholder.png',
+              image: animeCharacter.character.images?.jpg?.imageUrl ??
+                  AppImages.defaultImage,
             ),
           ),
           SizedBox(
@@ -39,7 +32,6 @@ class AnimeCharacterCard extends StatelessWidget {
                 ),
                 child: Text(
                   animeCharacter.character.name,
-                  textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontSize: 22,
                   ),

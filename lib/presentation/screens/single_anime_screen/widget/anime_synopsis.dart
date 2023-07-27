@@ -23,27 +23,30 @@ class _AnimeSynopsisState extends State<AnimeSynopsis> {
           isSynopsisReduced = !isSynopsisReduced;
         });
       },
-      child: RichText(
-        maxLines: isSynopsisReduced ? 4 : null,
-        overflow:
-            isSynopsisReduced ? TextOverflow.ellipsis : TextOverflow.visible,
-        text: TextSpan(children: <TextSpan>[
-          TextSpan(
-            text: Strings.animesPageStrings.synopsis,
-            style: const TextStyle(
-              color: AppColors.purple,
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+        child: RichText(
+          maxLines: isSynopsisReduced ? 4 : null,
+          overflow:
+              isSynopsisReduced ? TextOverflow.ellipsis : TextOverflow.visible,
+          text: TextSpan(children: <TextSpan>[
+            TextSpan(
+              text: Strings.animesPageStrings.synopsis,
+              style: const TextStyle(
+                color: AppColors.purple,
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          TextSpan(
-            text: widget.anime.synopsis,
-            style: const TextStyle(
-              color: AppColors.black,
-              fontSize: 24,
+            TextSpan(
+              text: widget.anime.synopsis,
+              style: const TextStyle(
+                color: AppColors.black,
+                fontSize: 24,
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
