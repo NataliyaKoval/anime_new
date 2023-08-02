@@ -10,8 +10,8 @@ class TopMangaScreenCubit extends Cubit<TopMangaScreenState> {
       : super(TopMangaScreenInitial());
 
   final GetTopMangaUsecase getTopMangaUsecase;
-  //int page = 1;
-  int page = 4265;
+  int page = 1;
+  //int page = 6480;
   bool isLastPage = false;
   List<Manga> allTopMangaList = <Manga>[];
   bool isTopMangaFutureRunning = false;
