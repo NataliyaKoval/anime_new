@@ -18,7 +18,7 @@ class MangaDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text(manga.title),),
       body: DefaultTabController(
         length: 3,
         child: Column(
