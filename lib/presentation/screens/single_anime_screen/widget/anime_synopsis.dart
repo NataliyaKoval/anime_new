@@ -31,7 +31,7 @@ class _AnimeSynopsisState extends State<AnimeSynopsis> {
               isSynopsisReduced ? TextOverflow.ellipsis : TextOverflow.visible,
           text: TextSpan(children: <TextSpan>[
             TextSpan(
-              text: Strings.animesPageStrings.synopsis,
+              text: '${Strings.animesPageStrings.synopsis}: ',
               style: const TextStyle(
                 color: AppColors.purple,
                 fontSize: 24,

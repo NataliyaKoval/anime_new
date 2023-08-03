@@ -1,5 +1,6 @@
 import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/presentation/screens/manga_detail_screen/widget/manga_detail_page.dart';
+import 'package:anime_new/presentation/screens/top_manga_screen/widget/manga_card.dart';
 import 'package:flutter/material.dart';
 
 class TopMangaList extends StatefulWidget {
@@ -52,18 +53,7 @@ class _TopMangaListState extends State<TopMangaList> {
       ),
       itemBuilder: (BuildContext context, int index) {
         if (index < widget.topMangaList.length) {
-          return InkWell(
-            onTap: () {
-              // Navigator.push<void>(
-              //     context,
-              //     MaterialPageRoute<void>(
-              //       builder: (BuildContext context) => const MangaDetailPage(manga: null,),
-              //     ));
-            },
-            child: Image.network(
-                widget.topMangaList[index].images?.jpg?.imageUrl ??
-                    'assets/images/placeholder.png'),
-          );
+          return MangaCard(manga: widget.topMangaList[index],);
         } else {
           return Center(
             child: widget.isLastPage

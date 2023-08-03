@@ -13,7 +13,7 @@ MangaEntity _$MangaEntityFromJson(Map<String, dynamic> json) => MangaEntity(
           ? null
           : MangaImagesEntity.fromJson(json['images'] as Map<String, dynamic>),
       title: json['title'] as String,
-      synopsis: json['synopsis'] as String?,
+      synopsis: json['synopsis'] as String,
       titleEnglish: json['title_english'] as String?,
       titleJapanese: json['title_japanese'] as String,
       chapters: json['chapters'] as int?,
@@ -25,8 +25,8 @@ MangaEntity _$MangaEntityFromJson(Map<String, dynamic> json) => MangaEntity(
       authors: (json['authors'] as List<dynamic>)
           .map((e) => AuthorEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
-      genres: (json['genres'] as List<dynamic>?)
-          ?.map((e) => GenreEntity.fromJson(e as Map<String, dynamic>))
+      genres: (json['genres'] as List<dynamic>)
+          .map((e) => GenreEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

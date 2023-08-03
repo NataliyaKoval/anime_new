@@ -9,7 +9,7 @@ import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_synopsis.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/anime_title.dart';
 import 'package:anime_new/presentation/screens/single_anime_screen/widget/common_text.dart';
-import 'package:anime_new/presentation/screens/single_anime_screen/widget/subtitle_text.dart';
+import 'package:anime_new/presentation/widgets/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
