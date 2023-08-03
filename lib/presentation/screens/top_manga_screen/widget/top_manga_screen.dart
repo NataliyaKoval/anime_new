@@ -62,16 +62,7 @@ class TopMangaScreen extends StatelessWidget {
         onFinishingScroll: () =>
             context.read<TopMangaScreenCubit>().getTopManga(),
       );
-    } else if (state is TopMangaScreenError) {
-      return Center(
-        child: ElevatedButton(
-          child: const Text('Retry'),
-          onPressed: () {
-            context.read<TopMangaScreenCubit>().getTopManga();
-          },
-        ),
-      );
     }
-    return const Center(child: CircularProgressIndicator());
+    return Container();
   }
 }

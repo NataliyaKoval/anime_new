@@ -12,7 +12,7 @@ class SubtitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      subtitle,
+      '$subtitle: ',
       style: const TextStyle(
         color: AppColors.purple,
         fontSize: 24,
