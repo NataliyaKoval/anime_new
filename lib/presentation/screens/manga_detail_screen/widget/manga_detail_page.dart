@@ -1,3 +1,4 @@
+import 'package:anime_new/consts/app_images.dart';
 import 'package:anime_new/consts/color_consts.dart';
 import 'package:anime_new/domain/models/models.dart';
 import 'package:anime_new/presentation/screens/manga_detail_screen/widget/info_tab.dart';
@@ -5,7 +6,6 @@ import 'package:anime_new/presentation/screens/manga_detail_screen/widget/poster
 import 'package:anime_new/presentation/screens/manga_detail_screen/widget/synopsis_tab.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../consts/app_images.dart';
 
 class MangaDetailPage extends StatelessWidget {
   const MangaDetailPage({
