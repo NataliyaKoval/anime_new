@@ -25,13 +25,15 @@ class InfoTab extends StatelessWidget {
     String startDate;
     String endDate;
     if (published?.from != null) {
-      startDate = DateFormat.yMd().format(DateTime.parse(published!.from!).toLocal());
+      startDate =
+          DateFormat.yMd().format(DateTime.parse(published!.from!).toLocal());
     } else {
       startDate = Strings.topMangaScreenStrings.noInfo;
     }
 
     if (published?.to != null) {
-      endDate = DateFormat.yMd().format(DateTime.parse(published!.to!).toLocal());
+      endDate =
+          DateFormat.yMd().format(DateTime.parse(published!.to!).toLocal());
     } else {
       endDate = Strings.topMangaScreenStrings.noInfo;
     }
@@ -42,6 +44,48 @@ class InfoTab extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SubtitleText(
+                  subtitle: Strings.topMangaScreenStrings.authors,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Text>[
+                    for (Author author in authors)
+                      Text(
+                        author.name ?? '',
+                        style: const TextStyle(fontSize: 24),
+                      )
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SubtitleText(
+                  subtitle: Strings.topMangaScreenStrings.genres,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Text>[
+                    for (Genre genre in genres)
+                      Text(
+                        genre.name ?? '',
+                        style: const TextStyle(fontSize: 24),
+                      )
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
               children: <Widget>[
                 SubtitleText(
                   subtitle: Strings.topMangaScreenStrings.chapters,
@@ -51,7 +95,9 @@ class InfoTab extends StatelessWidget {
                     : Strings.topMangaScreenStrings.noInfo),
               ],
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: <Widget>[
                 SubtitleText(
@@ -60,7 +106,9 @@ class InfoTab extends StatelessWidget {
                 Text(startDate),
               ],
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: <Widget>[
                 SubtitleText(
@@ -69,39 +117,15 @@ class InfoTab extends StatelessWidget {
                 Text(endDate),
               ],
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: <Widget>[
                 SubtitleText(
                   subtitle: Strings.topMangaScreenStrings.score,
                 ),
                 Text(score?.toString() ?? Strings.topMangaScreenStrings.noInfo),
-              ],
-            ),
-            const SizedBox(height: 10,),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SubtitleText(
-                  subtitle: Strings.topMangaScreenStrings.authors,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Text>[for (Author author in authors) Text(author.name ?? '')],
-                ),
-              ],
-            ),
-            const SizedBox(height: 10,),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SubtitleText(
-                  subtitle: Strings.topMangaScreenStrings.genres,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Text>[for (Genre genre in genres) Text(genre.name ?? '')],
-                ),
               ],
             ),
           ],

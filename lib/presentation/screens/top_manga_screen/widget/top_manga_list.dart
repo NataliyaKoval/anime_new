@@ -1,5 +1,4 @@
 import 'package:anime_new/domain/models/models.dart';
-import 'package:anime_new/presentation/screens/manga_detail_screen/widget/manga_detail_page.dart';
 import 'package:anime_new/presentation/screens/top_manga_screen/widget/manga_card.dart';
 import 'package:flutter/material.dart';
 
