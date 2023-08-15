@@ -1,14 +1,3 @@
-### To run tests
-Run in terminal `flutter test`
-
-### Test coverage
-1. Install `lcov`
-- Ubuntu: `sudo apt-get update -qq -y` + `sudo apt-get install lcov -y`
-- Mac: `brew install lcov`
-2. Install `remove_from_coverage`
-- `dart pub global activate remove_from_coverage`
-3. Run tests with coverage `sh scripts/test_with_coverage.sh`
-
 # Architecture
 Inside the project we use some sort of Clean Architecture + Bloc.
 
