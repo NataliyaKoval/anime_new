@@ -19,7 +19,7 @@ class FavoritesScreenCubit extends Cubit<FavoritesScreenState> {
 
   Future<void> getFavoriteAnimes() async {
     try {
-      favoriteAnimes = await getFavoriteAnimesUsecase.call();
+      favoriteAnimes = await getFavoriteAnimesUsecase();
       if (favoriteAnimes.isNotEmpty) {
         emit(FavoritesScreenLoaded(favoriteAnimes: favoriteAnimes));
       } else {

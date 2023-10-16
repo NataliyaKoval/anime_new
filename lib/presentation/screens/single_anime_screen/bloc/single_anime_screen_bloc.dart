@@ -29,7 +29,7 @@ class SingleAnimeScreenBloc
     try {
       emit(SingleAnimeScreenCharactersLoading());
       final List<AnimeCharacter> animeCharactersList =
-          await getAnimeCharactersUsecase.call(event.id);
+          await getAnimeCharactersUsecase(event.id);
       emit(SingleAnimeScreenCharactersLoaded(animeCharactersList));
     } catch (e) {
       emit(SingleAnimeScreenError());
@@ -39,7 +39,7 @@ class SingleAnimeScreenBloc
   Future<void> _toggleFavorites(
       ToggleFavoritesEvent event, Emitter<SingleAnimeScreenState> emit) async {
     try {
-      anime = await toggleFavoritesUsecase.call(anime);
+      anime = await toggleFavoritesUsecase(anime);
       emit(SingleAnimeScreenChanged(anime));
     } catch (e) {
       emit(SingleAnimeScreenError());

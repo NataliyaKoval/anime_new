@@ -24,7 +24,7 @@ class TopMangaScreenCubit extends Cubit<TopMangaScreenState> {
     isTopMangaFutureRunning = true;
 
     try {
-      final TopMangaResponseBody response = await getTopMangaUsecase.call(page);
+      final TopMangaResponseBody response = await getTopMangaUsecase(page);
       final List<Manga> topMangaList = response.data;
       final MangaPagination pagination = response.pagination;
       if (pagination.hasNextPage == false) {

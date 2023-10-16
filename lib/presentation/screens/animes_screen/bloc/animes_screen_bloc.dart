@@ -23,7 +23,7 @@ class AnimesScreenBloc extends Bloc<AnimesScreenEvent, AnimesScreenState> {
       GetBestAnimes event, Emitter<AnimesScreenState> emit) async {
     try {
       emit(AnimesScreenLoading());
-      animes = await getBestAnimesUsecase.call();
+      animes = await getBestAnimesUsecase();
       emit(AnimesScreenLoaded(animes));
     } catch (e) {
       emit(AnimesScreenError());
